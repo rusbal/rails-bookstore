@@ -1,0 +1,46 @@
+<!-- Alert and Messages -->
+
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<% if flash[:controller] %>
+  <% if params[:action] == 'index' %>
+
+    <% if flash[:saved] %>
+      <div class="alert alert-success">
+        <% if flash[:action] == 'create' %>
+          New <%= flash[:controller][0..-2].capitalize %> saved.
+        <% else %>
+          <%= flash[:controller][0..-2].capitalize %> updated.
+        <% end %>
+      </div>
+    <% end %>
+
+  <% elsif params[:action] == 'create' %>
+
+    <div class="alert alert-danger">
+      Not added, check new <%= flash[:controller][0..-2].capitalize %> entry.
+    </div>
+    <%= render "partials/errors" %>
+
+  <% elsif params[:action] == 'update' %>
+
+    <div class="alert alert-danger">
+      Not updated, check edits on <%= flash[:controller][0..-2].capitalize %>.
+    </div>
+
+    <% if flash[:action] == 'update' %>
+      <%= render "partials/errors" %>
+    <% end %>
+
+  <% end %>
+<% end %>
