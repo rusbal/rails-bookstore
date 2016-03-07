@@ -10,7 +10,12 @@
     <%= f.text_field :last_name, class:'form-control' %><br />
   </div>
 
+  <%=link_to "Cancel", authors_path, class:'btn btn-default' %>
+
+  <% if @author[:id] %>
+    <%= link_to "Delete", author_path(@author), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-danger' %>
+  <% end %>
+
   <%= f.submit "Submit", class:'btn btn-primary' %>
-  <%=link_to "Cancel", categories_path, class:'btn btn-default' %>
 
 <% end %>
