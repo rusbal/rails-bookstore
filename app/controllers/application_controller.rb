@@ -4,17 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_flash(type, object: nil)
-    p "**** DEBUG: Ray ****"
-    p action_name
-    p object
-    p "**** END: Ray ****"
     flash[:from] = action_name
-    flash[:type] = type
+    flash[:full_messages] = object.errors.any? ? object.errors.full_messages : nil
     flash[:object_type] = object.class.name
     flash[:object_id] = object.id
-
-    if object.errors.any?
-      flash[:full_messages] = object.errors.full_messages
-    end
+    flash[:type] = type
   end
 end
