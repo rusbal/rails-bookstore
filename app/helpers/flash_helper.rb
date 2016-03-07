@@ -4,7 +4,7 @@ module FlashHelper
   end
 
   def can_flash?
-    flash.keys.sort == ['from', 'object_id', 'object_type', 'type']
+    flash.keys.sort == ['from', 'full_messages', 'object_id', 'object_type', 'type']
   end
 
   def flash_object
@@ -13,5 +13,9 @@ module FlashHelper
 
   def flash_path
     File.join(controller_name, 'flash', flash[:from].to_s + '_' + flash[:type].to_s)
+  end
+
+  def flash_messages
+    flash[:full_messages]
   end
 end

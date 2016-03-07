@@ -1,5 +1,16 @@
-<div class="alert alert-info">
+<div class="alert alert-<%= flash[:type] == 'success' ? 'info' : 'danger' %>">
   <div class="container">
     <%= render flash_path, object: flash_object %>
+
+    <% if flash_messages %>
+
+      <ul>
+        <% flash_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+
+    <% end %>
+
   </div>
 </div>
