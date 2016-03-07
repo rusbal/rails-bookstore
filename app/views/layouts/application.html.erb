@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bookstore</title>
+  <title>Bookstore <%= @page_title ? @page_title : 'Welcome' %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -23,8 +23,8 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><%= link_to 'Home', root_path %></li>
-          <li><%= link_to 'About', about_path %></li>
+          <li class="<%= params[:controller] == 'books' ? 'active' : '' %>"><%= link_to 'Home', root_path %></li>
+          <li class="<%= params[:controller] == 'about' ? 'active' : '' %>"><%= link_to 'About', about_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -41,7 +41,30 @@
     </div>
   </nav>
 
-<%= yield %>
+  <header>
+    <div class="container">
+      <h1>The BookStore <small><%= @page_title ? @page_title : 'Welcome' %></small></h1>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <%= yield %>
+        </div>
+        <div class="col-md-4">
+          <%= render 'partials/sidebar' %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Copyright 2016 All rights reserved</p>
+    </div>
+  </footer>
 
 </body>
 </html>

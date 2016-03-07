@@ -16,4 +16,59 @@
 
 body {
   padding-top: 50px;
+
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5em;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+footer {
+  background: #333;
+  color: #fff;
+  height: 60px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#books-index {
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+  h3 {
+    height: 50px;
+  }
+  .btn {
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+#books-show {
+  h2 {
+    background: #f4f4f4;
+    margin-top: 20px;
+  }
+  .books-show-left {
+    float: left;
+    width: 40%;
+  }
+  .books-show-right {
+    float: right;
+    width: 60%;
+    margin-top: 10px;
+  }
+  .btn {
+    margin: 20px 0 0 70px;
+  }
 }
