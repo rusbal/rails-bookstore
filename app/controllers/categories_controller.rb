@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :find_id, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -17,26 +18,35 @@ class CategoriesController < ApplicationController
       redirect_to categories_path
     else
       set_flash :error, object: @category
-      render 'new'
+      render :new
     end
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
-
     if @category.update(category_params)
-      flash[:notice] = 'Category updated'
+      set_flash :success, object: @category
       redirect_to categories_path
     else
-      render 'new'
+      set_flash :error, object: @category
+      render :new
+    end
+  end
+
+  def destroy
+    if @category.destroy
+      flash[:success] = @category.name + ' was deleted.'
+      redirect_to categories_path
     end
   end
 
   private
+
+  def find_id
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)

@@ -1,6 +1,7 @@
 module FlashHelper
   def render_flash
     render 'flash' if can_flash?
+    render 'destroy' if flash[:destroy]
   end
 
   def can_flash?
