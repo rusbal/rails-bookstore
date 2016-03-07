@@ -1,7 +1,5 @@
 <ul>
-
-<% @categories.each do |cat| %>
-  <li><%= link_to cat.name, edit_category_path(cat) %></li>
-<% end %>
-
+  <% @categories.each do |cat| %>
+    <li><%= link_to cat.name, edit_category_path(cat) %></li>
+  <% end %>
 </ul>

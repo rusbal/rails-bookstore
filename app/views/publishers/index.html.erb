@@ -1,0 +1,5 @@
+<ul>
+  <% @publishers.each do |pub| %>
+    <li><%= link_to pub.name, edit_publisher_path(pub) %></li>
+  <% end %>
+</ul>

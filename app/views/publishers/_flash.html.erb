@@ -1,0 +1,10 @@
+<% if flash[:type] == 'success' %>
+
+  <h4>Congratulations</h4>
+  Your publisher has been successfully <%= flash[:from] %>d! <%= link_to "edit: #{object.name}", edit_publisher_path(object) %>
+
+<% else %>
+
+  <h4>Check your entries</h4>
+
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_for @publisher do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class:'form-control' %><br />
+  </div>
+
+  <%=link_to "Cancel", publishers_path, class:'btn btn-default' %>
+
+  <% if @publisher[:id] %>
+    <%= link_to "Delete", publisher_path(@publisher), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-danger' %>
+  <% end %>
+
+  <%= f.submit "Submit", class:'btn btn-primary' %>
+
+<% end %>
