@@ -14,10 +14,8 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      set_flash :success, object: @category
       redirect_to categories_path
     else
-      set_flash :error, object: @category
       render :new
     end
   end
@@ -27,20 +25,15 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    # @books = Book.where(category_id: params[:id])
     @category = Category.find(params[:id])
     @books = @category.books
     @categories = Category.all
-
-    # render 'books/index'
   end
 
   def update
     if @category.update(category_params)
-      set_flash :success, object: @category
       redirect_to categories_path
     else
-      set_flash :error, object: @category
       render :new
     end
   end
