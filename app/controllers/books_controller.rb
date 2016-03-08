@@ -18,6 +18,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
+      flash[:success] = @book.title + ' created.'
       redirect_to books_path
     else
       render :new
@@ -34,6 +35,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
+      flash[:success] = @book.title + ' updated.'
       redirect_to books_path
     else
       render :new

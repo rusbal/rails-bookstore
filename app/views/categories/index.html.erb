@@ -1,4 +1,4 @@
-<div style="background:#fef">
+<div>
   <h2 class="pull-left">Book Categories</h2>
   <%= link_to 'Add new', new_category_path, class: 'btn btn-default pull-right' %>
 </div>
@@ -11,7 +11,7 @@
   <% @categories.each do |cat| %>
     <tr>
       <td><%= cat.name %></td>
-      <td><%= link_to 'Edit', edit_category_path(cat) %> | <%= link_to 'Delete', category_path(cat), method: :delete %></td>
+      <td><%= link_to 'Edit', edit_category_path(cat) %> | <%= link_to 'Delete', category_path(cat), method: :delete, data: { confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
 </table>

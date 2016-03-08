@@ -1,5 +1,17 @@
-<ul>
+<div>
+  <h2 class="pull-left">Book Publishers</h2>
+  <%= link_to 'Add new', new_publisher_path, class: 'btn btn-default pull-right' %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+   <th>Publisher Name</th>
+   <th>Actions</th>
+  </tr>
   <% @publishers.each do |pub| %>
-    <li><%= link_to pub.name, edit_publisher_path(pub) %></li>
+    <tr>
+      <td><%= pub.name %></td>
+      <td><%= link_to 'Edit', edit_publisher_path(pub) %> | <%= link_to 'Delete', publisher_path(pub), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+    </tr>
   <% end %>
-</ul>
+</table>

@@ -14,10 +14,9 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      set_flash :success, object: @author
+      flash[:success] = @author.first_name + ' ' + @author.last_name + ' created.'
       redirect_to authors_path
     else
-      set_flash :error, object: @author
       render :new
     end
   end
@@ -28,10 +27,9 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update(author_params)
-      set_flash :success, object: @author
+      flash[:success] = @author.first_name + ' ' + @author.last_name + ' updated.'
       redirect_to authors_path
     else
-      set_flash :error, object: @author
       render :new
     end
   end

@@ -1,5 +1,17 @@
-<ul>
+<div>
+  <h2 class="pull-left">Book Authors</h2>
+  <%= link_to 'Add new', new_author_path, class: 'btn btn-default pull-right' %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+   <th>Author Name</th>
+   <th>Actions</th>
+  </tr>
   <% @authors.each do |author| %>
-    <li><%= link_to author.first_name + ' ' + author.last_name, edit_author_path(author) %></li>
+    <tr>
+      <td><%= author.first_name + ' ' + author.last_name %></td>
+      <td><%= link_to 'Edit', edit_author_path(author) %> | <%= link_to 'Delete', author_path(author), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
