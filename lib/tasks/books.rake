@@ -27,7 +27,7 @@ namespace :books do
 
     book = Book.new(row)
     if book.save
-      puts 'New book successfully created'
+      puts 'Success: New book successfully created'
     else
       puts 'Error on book creation'
     end
