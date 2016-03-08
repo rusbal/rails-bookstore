@@ -14,10 +14,8 @@ class PublishersController < ApplicationController
     @publisher = Publisher.new(publisher_params)
 
     if @publisher.save
-      set_flash :success, object: @publisher
       redirect_to publishers_path
     else
-      set_flash :error, object: @publisher
       render :new
     end
   end
@@ -28,10 +26,8 @@ class PublishersController < ApplicationController
 
   def update
     if @publisher.update(publisher_params)
-      set_flash :success, object: @publisher
       redirect_to publishers_path
     else
-      set_flash :error, object: @publisher
       render :new
     end
   end
