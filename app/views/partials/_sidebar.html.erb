@@ -12,8 +12,9 @@
   </div>
 <% end %>
 
-<% if params[:controller] == 'books' && ['index', 'show'].include?(params[:action]) %>
+<% if (params[:controller] == 'books' && ['index', 'show'].include?(params[:action])) || (params[:controller] == 'categories' && params[:action] == 'show') %>
   <div class="list-group">
+    <%= link_to 'All Books', books_path, class: 'list-group-item' %>
     <% @categories.each do |cat| %>
       <%= link_to cat.name, category_path(cat), class: 'list-group-item' %>
     <% end %>
