@@ -3,8 +3,23 @@ namespace :books do
   desc "Adds a book to database by specifying only an image file."
 
   task add: :environment do
-    @image_file = ARGV[1].split('=').last
+    covers_path = Rails.root.to_s + '/app/assets/images/covers/'
+
+    if !ARGV[1]
+      puts "Please pass an image file in #{covers_path}"
+      puts `ls #{covers_path}`
+      abort
+    end
+
+    @image_file = ARGV[1]
     puts "Insert a book with cover: #{@image_file}"
+
+    filename = covers_path + @image_file
+
+    if !File.file?(filename)
+      puts "Input: #{filename} cannot be found."
+      abort
+    end
 
     if Book.where(coverpath: coverpath).count > 0
       puts "This cover is already used."
