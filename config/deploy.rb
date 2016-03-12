@@ -5,6 +5,7 @@ set :application, 'bookstore'
 set :repo_url, 'git@github.com:rusbal/rails-bookstore.git'
 set :user, 'deployer'
 set :stages, %w(production)
+set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
